@@ -20,7 +20,7 @@ jobs:
       with:
         type: 'zip'
         filename: 'test.zip'
-        exclusions: '*.git* /*node_modules/* .editorconfig /src/debug.js'
+        exclusions: '*.git* /*node_modules/* .editorconfig release.zip /src/debug.js'
     - name: Upload Release
       uses: ncipollo/release-action@v1.12.0
       with:
