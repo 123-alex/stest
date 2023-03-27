@@ -9,18 +9,20 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
-    - name: Archive Release
-      uses: thedoctor0/zip-release@0.7.1
-      with:
-        type: 'zip'
-        filename: 'release.zip'
-        exclusions: '*.git* /*node_modules/* .editorconfig'
     - name: Archive Debug
       uses: thedoctor0/zip-release@0.7.1
       with:
         type: 'zip'
         filename: 'test.zip'
-        exclusions: '*.git* /*node_modules/* .editorconfig release.zip /src/debug.js'
+        exclusions: '*.git* /*node_modules/* .editorconfig'
+    - name: Remove Debug
+      run: awk -i inplace '!/DEBUG/' index.js    
+    - name: Archive Release
+      uses: thedoctor0/zip-release@0.7.1
+      with:
+        type: 'zip'
+        filename: 'release.zip'
+        exclusions: '*.git* /*node_modules/* .editorconfig test.zip /src/debug.js'
     - name: Upload Release
       uses: ncipollo/release-action@v1.12.0
       with:
