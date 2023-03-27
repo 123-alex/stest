@@ -21,7 +21,8 @@ jobs:
       uses: thedoctor0/zip-release@0.7.1
       with:
         type: 'zip'
-        filename: 'release.zip'
+        directory: 'src/'
+        filename: '../release.zip'
         exclusions: '*.git* /*node_modules/* .editorconfig test.zip /src/debug.js'
     - name: Upload Release
       uses: ncipollo/release-action@v1.12.0
