@@ -1,10 +1,7 @@
 name: Create Archive
 on:
   push:
-    branches:
-      - master
     tags:
-      include:
       - 'v*'
 
 jobs:
