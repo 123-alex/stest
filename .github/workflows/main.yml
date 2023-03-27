@@ -1,13 +1,11 @@
 name: Create Archive
-on: [push]
-
-trigger:
-  branches:
-    include:
-    - master
-  tags:
-    include:
-    - 'v*'
+on:
+  push:
+    branches:
+      - master
+    tags:
+      include:
+      - 'v*'
 
 jobs:
   build:
