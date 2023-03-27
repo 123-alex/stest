@@ -15,9 +15,15 @@ jobs:
         type: 'zip'
         filename: 'release.zip'
         exclusions: '*.git* /*node_modules/* .editorconfig'
+    - name: Archive Debug
+      uses: thedoctor0/zip-release@0.7.1
+      with:
+        type: 'zip'
+        filename: 'test.zip'
+        exclusions: '*.git* /*node_modules/* .editorconfig /src/debug.js'
     - name: Upload Release
       uses: ncipollo/release-action@v1.12.0
       with:
-        artifacts: "release.zip"
+        artifacts: "release.zip", "test.zip"
         token: ${{ secrets.GITHUB_TOKEN }}    
         
