@@ -16,7 +16,7 @@ jobs:
         filename: 'test.zip'
         exclusions: '*.git* /*node_modules/* .editorconfig'
     - name: Remove Debug
-      run: awk -i inplace '!/DEBUG/' index.js    
+      run: awk -i inplace '!/DEBUG/' /src/index.js    
     - name: Archive Release
       uses: thedoctor0/zip-release@0.7.1
       with:
