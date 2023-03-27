@@ -3,6 +3,7 @@ on: [push]
 jobs:
   build:
     runs-on: ubuntu-latest
+    condition: contains(variables['Build.SourceBranch'], 'refs/tags/v')
     steps:
     - uses: actions/checkout@master
     - name: Archive Release
