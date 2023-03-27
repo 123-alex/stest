@@ -1,9 +1,17 @@
 name: Create Archive
 on: [push]
+
+trigger:
+  branches:
+    include:
+    - master
+  tags:
+    include:
+    - 'v*'
+
 jobs:
   build:
     runs-on: ubuntu-latest
-    condition: contains(variables['Build.SourceBranch'], 'refs/tags/v')
     steps:
     - uses: actions/checkout@master
     - name: Archive Release
