@@ -9,6 +9,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
+    - name: Substitute Environment Variables
+      run: awk -i inplace '{sub(/EXTENSION_KEY/,ENVIRON["EXTENSION_KEY"]); print}' index.js
     - name: Archive Debug
       uses: thedoctor0/zip-release@0.7.1
       with:
@@ -16,7 +18,7 @@ jobs:
         filename: 'test.zip'
         exclusions: '*.git* /*node_modules/* .editorconfig'
     - name: Remove Debug
-      run: awk -i inplace '!/DEBUG/' src/index.js    
+      run: awk -i inplace '!/DEBUG/' src/index.js
     - name: Archive Release
       uses: thedoctor0/zip-release@0.7.1
       with:
