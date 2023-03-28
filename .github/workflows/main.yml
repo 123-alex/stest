@@ -10,7 +10,7 @@ jobs:
     steps:
     - uses: actions/checkout@master
     - name: Substitute Environment Variables
-      run: echo $EXTENSION_KEY | awk -i inplace '{sub(/EXTENSION_KEY/,ENVIRON["EXTENSION_KEY"]); print}' src/index.js
+      run: awk -v var=${{ vars.EXTENSION_KEY }} -i inplace '{sub(/EXTENSION_KEY/,var); print}' src/index.js
     - name: Archive Debug
       uses: thedoctor0/zip-release@0.7.1
       with:
